@@ -2,3 +2,7 @@
 name = "DKSportsbookClient"
 version = "0.1-alpha"
 license = { file = "LICENSE.md" }
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
