@@ -1,0 +1,5 @@
+# Local testing files
+*.ipynb
+
+# Cache files
+__pycache__/
