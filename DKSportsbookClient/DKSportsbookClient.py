@@ -5,7 +5,10 @@ class DKSportsbookClient:
     BASE_URL = r'https://sportsbook-nash-usma.draftkings.com/sites/{}/api/{}/{}/{}/{}'
     LEAGUES = {
         'NFL': 88808,
-        'NBA': 42648
+        'NBA': 42648,
+        'NCAAM': 92483,
+        'NCAAW': 36647,
+        'NHL': 42133,
     }
     def __init__(self, **kwargs) -> None:
         if not 'location_code' in kwargs or not kwargs['location_code']:
@@ -41,7 +44,7 @@ class DKSportsbookClient:
     @staticmethod
     def __format_url(location_code: str, api_version: str = 'v5', service: str = 'eventgroups', id: int = 42648, relative_url: str = '') -> str:
         return DKSportsbookClient.BASE_URL.format(location_code, api_version, service, id, relative_url)
-    
+
     def get_event_group(self, event_group_id, **kwargs) -> dict:
         url = DKSportsbookClient.__format_url(self.location_code, api_version='v5', service='eventgroups', id=event_group_id)
         return DKSportsbookClient.__get(url, **kwargs)
