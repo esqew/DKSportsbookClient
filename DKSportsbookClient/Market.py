@@ -14,7 +14,7 @@ class Market(DKSportsbookClientBase):
 
     @staticmethod
     def from_dict(market_dict: dict, selection_list: list[Selection]) -> Self:
-        return Market(market_dict.get('id'), market_dict.get('event_id'), market_dict.get('marketType').get('name'), market_dict.get('name'), [selection for selection in selection_list if selection.get('marketId') == market_dict.get('id')])
+        return Market(market_dict.get('id'), market_dict.get('eventId'), market_dict.get('marketType').get('name'), market_dict.get('name'), Selection.from_list([selection for selection in selection_list if selection.get('marketId') == market_dict.get('id')]))
     
     @staticmethod
     def from_list(market_list: list[dict], selection_list: list[Selection]) -> list[Self]:
